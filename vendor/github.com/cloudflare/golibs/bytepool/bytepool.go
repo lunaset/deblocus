@@ -27,8 +27,8 @@ func (tp *BytePool) Init(drainPeriod time.Duration, maxSize uint32) {
 	tp.maxSize = (1 << maxSizeLog) - 1
 	// 32-bit catch
 	if tp.maxSize <= 0 {
-		tp.maxSize = math.MaxInt32
-		maxSizeLog = log2Ceil(math.MaxInt32)
+		tp.maxSize = math.0xFffFFff
+		maxSizeLog = log2Ceil(math.0xFffFFff)
 	}
 	tp.list_of_pools = make([]pool, maxSizeLog+1)
 	if drainPeriod > 0 {
